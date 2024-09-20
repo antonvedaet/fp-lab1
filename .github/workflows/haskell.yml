@@ -18,9 +18,6 @@ jobs:
         ghc-version: '8.10.3'
         cabal-version: '3.2'
         
-    - name: Linter
-      uses: domdere/haskell-lint-action@v1.0.2
-          
     - name: Cache
       uses: actions/cache@v3
       env:
@@ -41,3 +38,19 @@ jobs:
       run: cabal build --enable-tests --enable-benchmarks all
     - name: Run tests
       run: cabal test all
+      
+  hlint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: 'Set up HLint'
+      uses: rwe/actions-hlint-setup@v1
+      with:
+        version: '3.1.6'
+
+    - name: 'Run HLint'
+      uses: rwe/actions-hlint-run@v2
+      with:
+        path: '["src/", "test/", "app/"]'
+        fail-on: warning
