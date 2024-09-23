@@ -10,7 +10,7 @@
 #
 # resolver: lts-22.7
 # resolver: nightly-2024-01-20
-# resolver: ghc-9.6.4
+resolver: ghc-9.6.6
 #
 # The location of a snapshot can be provided as a file or url. Stack assumes
 # a snapshot provided as a file might change, whereas a url resource does not.
@@ -35,11 +35,11 @@ packages:
 # These entries can reference officially published versions as well as
 # forks / in-progress versions pinned to a git hash. For example:
 #
-# extra-deps:
+extra-deps:
 # - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
-#
+
 # extra-deps: []
 
 # Override default flag values for local packages and extra-deps

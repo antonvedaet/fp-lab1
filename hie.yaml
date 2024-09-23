@@ -1,0 +1,10 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "fp-lab1:lib"
+
+    - path: "./app/Main.hs"
+      component: "fp-lab1:exe:fp-lab1-exe"
+
+    - path: "./test"
+      component: "fp-lab1:test:fp-lab1-test"
