@@ -1,6 +1,8 @@
 module Lib (
-    task13Solution,
-    task13,
+    takeFirst10Digits,
+    task13Recursively,
+    task13Numbers,
+    task13Tail,
 ) where
 
 task13Numbers :: [Integer]
@@ -107,8 +109,16 @@ task13Numbers =
     , 53503534226472524250874054075591789781264330331690
     ]
 
-task13 :: [Integer] -> [Char]
-task13 nums = take 10 $ show $ sum nums
+task13Recursively :: [Integer] -> Integer
+task13Recursively [] = 0
+task13Recursively (x : xs) = x + task13Recursively xs
 
-task13Solution :: [Char]
-task13Solution = task13 task13Numbers
+task13Tail :: [Integer] -> Integer
+task13Tail x = go x 0
+  where
+    go :: [Integer] -> Integer -> Integer
+    go [] acc = acc
+    go (xx : xs) acc = go xs (acc + xx)
+
+takeFirst10Digits :: Integer -> Integer
+takeFirst10Digits n = read (take 10 (show n)) :: Integer

@@ -3,5 +3,5 @@ import Test.HUnit
 
 main :: IO ()
 main = do
-    _ <- runTestTT $ TestList [testTask13]
+    _ <- runTestTT $ TestList [testTask13Recursively, testTask13Tail]
     return ()

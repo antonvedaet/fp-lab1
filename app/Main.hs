@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Lib
+import Lib (takeFirst10Digits, task13Numbers, task13Recursively)
 
 main :: IO ()
-main = putStrLn task13Solution
+main = putStrLn $ show (takeFirst10Digits $ task13Recursively task13Numbers)
