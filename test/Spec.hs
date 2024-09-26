@@ -14,5 +14,6 @@ main = do
                 , testTask18RecursivelyBrute
                 , testTask18RecursivelyTailBrute
                 , testTask18Memoization
+                , testTask13RecursivelyGenerated
                 ]
     return ()

@@ -5,6 +5,7 @@ module Task13 (
     task13Tail,
     task13Lazy,
     task13RecursiveAlt,
+    task13NumbersDoubled,
 ) where
 
 task13Numbers :: [Integer]
@@ -110,6 +111,9 @@ task13Numbers =
     , 20849603980134001723930671666823555245252804609722
     , 53503534226472524250874054075591789781264330331690
     ]
+
+task13NumbersDoubled :: [Integer]
+task13NumbersDoubled = map (* 2) task13Numbers
 
 task13Recursively :: [Integer] -> Integer
 task13Recursively [] = 0
