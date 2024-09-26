@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Task13
+      Task18
   other-modules:
       Paths_fp_lab1
   autogen-modules:
