@@ -1,6 +1,7 @@
 module Task18 (
     task18RecursionBrute,
     task18RecursionTailBrute,
+    task18MemoizationInfiniteLists,
 ) where
 
 task18Triangle :: [[Int]]
@@ -23,7 +24,12 @@ task18Triangle =
     ]
 
 task18RecursionBrute :: Int -> Int -> Int
-task18RecursionBrute x y = (task18Triangle !! x !! y) + (if x + 1 < length task18Triangle then max (task18RecursionBrute (x + 1) y) (task18RecursionBrute (x + 1) (y + 1)) else 0)
+task18RecursionBrute x y =
+    (task18Triangle !! x !! y)
+        + ( if x + 1 < length task18Triangle
+                then max (task18RecursionBrute (x + 1) y) (task18RecursionBrute (x + 1) (y + 1))
+                else 0
+          )
 
 task18RecursionTailBrute :: Int
 task18RecursionTailBrute = go 0 0 0
@@ -36,3 +42,11 @@ task18RecursionTailBrute = go 0 0 0
                 r = go (i + 1) (j + 1) (acc + currVal)
              in max l r
         | otherwise = acc
+
+task18MemoizationInfiniteLists :: Int -> Int -> Int
+task18MemoizationInfiniteLists x y =
+    (task18Triangle !! x !! y)
+        + ( if x + 1 < length task18Triangle
+                then max ([[task18MemoizationInfiniteLists xx yy | yy <- [0 ..]] | xx <- [0 ..]] !! (x + 1) !! y) ([[task18MemoizationInfiniteLists xx yy | yy <- [0 ..]] | xx <- [0 ..]] !! (x + 1) !! (y + 1))
+                else 0
+          )
