@@ -3,6 +3,7 @@ module Lib (
     task13Recursively,
     task13Numbers,
     task13Tail,
+    task13Lazy,
 ) where
 
 task13Numbers :: [Integer]
@@ -120,5 +121,8 @@ task13Tail x = go x 0
     go [] acc = acc
     go (xx : xs) acc = go xs (acc + xx)
 
+task13Lazy :: [Integer] -> Integer
+task13Lazy = sum
+
 takeFirst10Digits :: Integer -> Integer
-takeFirst10Digits n = read (take 10 (show n)) :: Integer
+takeFirst10Digits n = read $ take 10 (show n) :: Integer
