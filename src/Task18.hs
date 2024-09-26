@@ -1,6 +1,9 @@
-module Task18 () where
+module Task18 (
+    task18RecursionBrute,
+    task18RecursionTailBrute,
+) where
 
-task18Triangle :: [[Integer]]
+task18Triangle :: [[Int]]
 task18Triangle =
     [ [75]
     , [95, 64]
@@ -19,5 +22,17 @@ task18Triangle =
     , [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
     ]
 
--- task18 :: [[Integer]] -> Integer
--- task18 x =
+task18RecursionBrute :: Int -> Int -> Int
+task18RecursionBrute x y = (task18Triangle !! x !! y) + (if x + 1 < length task18Triangle then max (task18RecursionBrute (x + 1) y) (task18RecursionBrute (x + 1) (y + 1)) else 0)
+
+task18RecursionTailBrute :: Int
+task18RecursionTailBrute = go 0 0 0
+  where
+    go i j acc
+        | i >= length task18Triangle = acc
+        | j < length (task18Triangle !! i) =
+            let currVal = task18Triangle !! i !! j
+                l = go (i + 1) j (acc + currVal)
+                r = go (i + 1) (j + 1) (acc + currVal)
+             in max l r
+        | otherwise = acc

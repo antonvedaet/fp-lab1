@@ -60,6 +60,7 @@ test-suite fp-lab1-test
   main-is: Spec.hs
   other-modules:
       Task13Spec
+      Task18Spec
       Paths_fp_lab1
   autogen-modules:
       Paths_fp_lab1
